@@ -1,0 +1,4 @@
+﻿<% for(var i = 0; i< notices.length; i++) { 
+	var notice = notices[i] %>
+	<li><%= notice.content.replace(/\n/ig, '<br />') %></li>
+<% } %>

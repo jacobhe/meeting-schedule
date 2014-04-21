@@ -1,0 +1,21 @@
+﻿<div class="cb-root">
+    <table cellspacing="0" cellpadding="0" class="cb-table">
+        <tbody>
+            <tr>
+                <th class="cb-key">
+                    设备列表：
+                </th>
+                <td class="cb-value">
+                    <div class="textbox-fill-wrapper">
+                      <div class="textbox-fill-mid" style="text-align:left;">
+                        <% for(var i = 0; i < equipments.length; i++) {
+                            var equipment = equipments[i]; %>
+                            <input type="checkbox" class="ck-equipments" value="<%= equipment.name %>" rooms="<%= equipment.meeting_rooms.join(',') %>" id="<%= equipment.name %>"/><label for="<%= equipment.name %>"><%= equipment.name %></label><br/>
+                        <% } %>
+                      </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

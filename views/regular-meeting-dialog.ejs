@@ -1,0 +1,189 @@
+﻿<form class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="startDate">开始日期</label>
+        <div class="controls">
+             <input type="text" id="startDate" name="startDate" class="select-date" readonly="readonly">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="endDate">结束日期</label>
+        <div class="controls">
+    		<input type="text" id="endDate" name="endDate" class="select-date" readonly="readonly">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="frequency">频率</label>
+        <div class="controls">
+                  <select id="frequency" name="frequency" class="cb-frequency">
+					<!--<option value="daily">天</option>-->
+					<option value="weekly">周</option>
+					<option value="monthly">月</option>
+                  </select>
+                  <div id="div_select_days">
+                    <input id="sunday" type="checkbox" value="0" class="ck-days"><label class="lbl-days" for="sunday">日</label>
+                    <input id="monday" type="checkbox" value="1" class="ck-days"><label class="lbl-days" for="monday">一</label>
+                    <input id="tuesday" type="checkbox" value="2" class="ck-days"><label class="lbl-days" for="tuesday">二</label>
+                    <input id="wednesday" type="checkbox" value="3" class="ck-days"><label class="lbl-days" for="wednesday">三</label>
+                    <input id="thurday" type="checkbox" value="4" class="ck-days"><label class="lbl-days" for="thurday">四</label>
+                    <input id="friday" type="checkbox" value="5" class="ck-days"><label class="lbl-days" for="friday">五</label>
+                    <input id="saturday" type="checkbox" value="6" class="ck-days"><label class="lbl-days" for="saturday">六</label>
+                  </div>
+                  <div id="div_select_week" style="display:none;">
+                    第
+                    <select id="select_week" class="cb-frequency">
+                      <option value="第一周">一周</option>
+                      <option value="第二周">二周</option>
+                      <option value="第三周">三周</option>
+                      <option value="第四周">四周</option>
+                      <option value="第五周">五周</option>
+                    </select>
+                    <div id="select_days2">
+                      <input id="sunday2" type="checkbox" value="0" class="ck-days"><label class="lbl-days" for="sunday2">日</label>
+                      <input id="monday2" type="checkbox" value="1" class="ck-days"><label class="lbl-days" for="monday2">一</label>
+                      <input id="tuesday2" type="checkbox" value="2" class="ck-days"><label class="lbl-days" for="tuesday2">二</label>
+                      <input id="wednesday2" type="checkbox" value="3" class="ck-days"><label class="lbl-days" for="wednesday2">三</label>
+                      <input id="thurday2" type="checkbox" value="4" class="ck-days"><label class="lbl-days" for="thurday2">四</label>
+                      <input id="friday2" type="checkbox" value="5" class="ck-days"><label class="lbl-days" for="friday2">五</label>
+                      <input id="saturday2" type="checkbox" value="6" class="ck-days"><label class="lbl-days" for="saturday2">六</label>
+                    </div>
+                  </div>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="startTime">会议时间</label>
+        <div class="controls">
+<select id="startTime" name="startTime" class="meeting-time">
+								<option value="08:00">08:00</option>
+								<option value="08:30">08:30</option>
+								<option value="09:00" selected="selected">09:00</option>
+								<option value="09:30">09:30</option>
+								<option value="10:00">10:00</option>
+								<option value="10:30">10:30</option>
+								<option value="11:00">11:00</option>
+								<option value="11:30">11:30</option>
+								<option value="12:00">12:00</option>
+								<option value="12:30">12:30</option>
+								<option value="13:00">13:00</option>
+								<option value="13:30">13:30</option>
+								<option value="14:00">14:00</option>
+								<option value="14:30">14:30</option>
+								<option value="15:00">15:00</option>
+								<option value="15:30">15:30</option>
+								<option value="16:00">16:00</option>
+								<option value="16:30">16:30</option>
+								<option value="17:00">17:00</option>
+								<option value="17:30">17:30</option>
+								<option value="18:00">18:00</option>
+								<option value="18:30">18:30</option>
+								<option value="19:00">19:00</option>
+								<option value="19:30">19:30</option>
+								<option value="20:00">20:00</option>
+								<option value="20:30">20:30</option>
+								<option value="21:00">21:00</option>
+								<option value="21:30">21:30</option>
+								<option value="22:00">22:00</option>
+								<option value="22:30">22:30</option>
+								<option value="23:00">23:00</option>
+								<option value="23:30">23:30</option>
+							</select>
+                            ~ 
+							<select id="endTime" name="endTime" class="meeting-time">
+								<option value="08:00">08:00</option>
+								<option value="08:30">08:30</option>
+								<option value="09:00">09:00</option>
+								<option value="09:30">09:30</option>
+								<option value="10:00" selected="selected">10:00</option>
+								<option value="10:30">10:30</option>
+								<option value="11:00">11:00</option>
+								<option value="11:30">11:30</option>
+								<option value="12:00">12:00</option>
+								<option value="12:30">12:30</option>
+								<option value="13:00">13:00</option>
+								<option value="13:30">13:30</option>
+								<option value="14:00">14:00</option>
+								<option value="14:30">14:30</option>
+								<option value="15:00">15:00</option>
+								<option value="15:30">15:30</option>
+								<option value="16:00">16:00</option>
+								<option value="16:30">16:30</option>
+								<option value="17:00">17:00</option>
+								<option value="17:30">17:30</option>
+								<option value="18:00">18:00</option>
+								<option value="18:30">18:30</option>
+								<option value="19:00">19:00</option>
+								<option value="19:30">19:30</option>
+								<option value="20:00">20:00</option>
+								<option value="20:30">20:30</option>
+								<option value="21:00">21:00</option>
+								<option value="21:30">21:30</option>
+								<option value="22:00">22:00</option>
+								<option value="22:30">22:30</option>
+								<option value="23:00">23:00</option>
+								<option value="23:30">23:30</option>
+							</select>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <div class="control-group">
+        <label class="control-label" for="meetingRoom">会议室</label>
+        <div class="controls">
+        			<select id="meetingRoom" name="meetingRoom">
+                <% for(var i = 0; i < meeting_rooms.length; i++) {
+                  var meeting_room = meeting_rooms[i]; %>
+								<option value="<%= meeting_room.name %>"><%= meeting_room.name %></option>
+                <% } %>
+							</select>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="title">会议主题</label>
+        <div class="controls">
+                                    <input type="text" id="title" name="title">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="department">部门</label>
+        <div class="controls">
+							            <select id="department" name="department">
+								            <option value="">-- 请选择部门 --</option>
+                            <% for(var i = 0; i < departments.length; i++) {
+                                var department = departments[i]; %>
+								            <option value="<%= department.name %>"><%= department.name %></option>
+								            <% } %>
+							            </select>
+
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="username">人名</label>
+        <div class="controls">
+                            <input type="text" id="username" name="username">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="phone">分机</label>
+        <div class="controls">
+                            <input type="text" id="phone" name="phone">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="equipment">设备</label>
+        <div class="controls">
+                  <input type="button" id="equipment" value="选择设备" style="pointer:corsor">
+                    <span id="equipmentList"></span>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+</div>

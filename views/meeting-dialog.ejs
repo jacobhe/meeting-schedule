@@ -1,0 +1,133 @@
+﻿<form class="form-horizontal">
+  <div class="control-group">
+        <label class="control-label" for="startTime">会议时间</label>
+        <div class="controls">
+          <select id="startTime" name="startTime" class="meeting-time">
+		  <option value="08:00">08:00</option>
+		  <option value="08:30">08:30</option>
+		  <option value="09:00">09:00</option>
+		  <option value="09:30">09:30</option>
+		  <option value="10:00">10:00</option>
+		  <option value="10:30">10:30</option>
+		  <option value="11:00">11:00</option>
+		  <option value="11:30">11:30</option>
+		  <option value="12:00">12:00</option>
+		  <option value="12:30">12:30</option>
+		  <option value="13:00">13:00</option>
+		  <option value="13:30">13:30</option>
+		  <option value="14:00">14:00</option>
+		  <option value="14:30">14:30</option>
+		  <option value="15:00">15:00</option>
+		  <option value="15:30">15:30</option>
+		  <option value="16:00">16:00</option>
+		  <option value="16:30">16:30</option>
+		  <option value="17:00">17:00</option>
+		  <option value="17:30">17:30</option>
+		  <option value="18:00">18:00</option>
+		  <option value="18:30">18:30</option>
+		  <option value="19:00">19:00</option>
+		  <option value="19:30">19:30</option>
+		  <option value="20:00">20:00</option>
+		  <option value="20:30">20:30</option>
+		  <option value="21:00">21:00</option>
+		  <option value="21:30">21:30</option>
+		  <option value="22:00">22:00</option>
+		  <option value="22:30">22:30</option>
+		  <option value="23:00">23:00</option>
+		  <option value="23:30">23:30</option>
+		  </select>
+          ~ 
+		  <select id="endTime" name="endTime" class="meeting-time">
+		  <option value="08:00">08:00</option>
+		  <option value="08:30">08:30</option>
+		  <option value="09:00">09:00</option>
+		  <option value="09:30">09:30</option>
+		  <option value="10:00">10:00</option>
+		  <option value="10:30">10:30</option>
+		  <option value="11:00">11:00</option>
+		  <option value="11:30">11:30</option>
+		  <option value="12:00">12:00</option>
+		  <option value="12:30">12:30</option>
+		  <option value="13:00">13:00</option>
+		  <option value="13:30">13:30</option>
+		  <option value="14:00">14:00</option>
+		  <option value="14:30">14:30</option>
+		  <option value="15:00">15:00</option>
+		  <option value="15:30">15:30</option>
+		  <option value="16:00">16:00</option>
+		  <option value="16:30">16:30</option>
+		  <option value="17:00">17:00</option>
+		  <option value="17:30">17:30</option>
+		  <option value="18:00">18:00</option>
+		  <option value="18:30">18:30</option>
+		  <option value="19:00">19:00</option>
+		  <option value="19:30">19:30</option>
+		  <option value="20:00">20:00</option>
+		  <option value="20:30">20:30</option>
+		  <option value="21:00">21:00</option>
+		  <option value="21:30">21:30</option>
+		  <option value="22:00">22:00</option>
+		  <option value="22:30">22:30</option>
+		  <option value="23:00">23:00</option>
+		  <option value="23:30">23:30</option>
+		  </select>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="meetingRoom">会议室</label>
+        <div class="controls">
+          <select id="meetingRoom" name="meetingRoom">
+                <option value="">-- 请选择会议室 --</option>
+                <% for(var i = 0; i < meeting_rooms.length; i++) {
+                  var meeting_room = meeting_rooms[i]; %>
+								<option value="<%= meeting_room.name %>"><%= meeting_room.name %></option>
+                <% } %>
+							</select>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="title">会议主题</label>
+        <div class="controls">
+          <input type="text" id="title" name="title">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="department">部门</label>
+        <div class="controls">
+							            <select id="department" name="department">
+								            <option value="">-- 请选择部门 --</option>
+                            <% for(var i = 0; i < departments.length; i++) {
+                                var department = departments[i]; %>
+								            <option value="<%= department.name %>"><%= department.name %></option>
+								            <% } %>
+							            </select>
+
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="username">人名</label>
+        <div class="controls">
+          <input type="text" id="username" name="username">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="phone">分机</label>
+        <div class="controls">
+                                     <input type="text" id="phone" name="phone">
+          <span class="help-inline"></span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="selectExpressCompany">设备</label>
+        <div class="controls">
+                          <input type="button" id="equipment" value="选择设备" style="pointer:corsor">
+                    <span id="equipmentList"></span>
+          <span class="help-inline"></span>
+        </div>
+      </div>
+</form>

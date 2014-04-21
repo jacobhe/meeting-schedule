@@ -1,0 +1,32 @@
+﻿<dl style="height: <%= height %>px; border-color: #ECA100; background-color: #ECA100;" class="cbrd">
+	<dt style="background-color: #EC8500;">
+		<span class="mt-label-time">
+			<%= startTime %> - <%= endTime %>
+		</span>
+		<span>点击修改</span>
+	</dt>
+	<dd>
+		<span class="ca-elp120">
+			<span class="mt-title">
+				<%= title %>
+			</span>
+			<br>
+			<span class="mt-department">
+				<%= department %>
+			</span>
+			<br>
+			<span class="mt-name">
+				<%= name %>
+			</span>
+			<br>
+			<span class="mt-phone">
+				<%= phone %>
+			</span>
+			<br>
+			<span class="mt-equipments">
+				<%= equipments.join(', ') %>
+			</span>
+			<input class="mt-scope" type="hidden" value="<%= scope %>">
+		</span>
+	</dd>
+</dl>

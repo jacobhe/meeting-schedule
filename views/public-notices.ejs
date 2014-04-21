@@ -1,0 +1,43 @@
+﻿<% include header %>
+<div style="padding: 5px;">
+  <div>
+    <a id="add-notice" href="#" style="margin-right:20px;" class="btn btn-primary">添加公告</a>
+  </div>
+</div>
+<div id="list">
+  <table id="list-table" class="table table-striped table-bordered">
+    <colgroup>
+      <col style="width: 120px;"/>
+    </colgroup>
+    <thead>
+      <tr class="tb-header">
+        <th>
+          #
+        </th>
+        <th>
+          内容
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var p in notices) { 
+			var notice = notices[p] %>
+      <tr class="tb-list">
+        <td>
+          <a href="#" _id="<%= notice._id %>" class="edit-notice btn btn-primary">编辑
+          </a>
+          <a href="#" _id="<%= notice._id %>" class="delete-notice btn btn-danger">删除
+          </a>
+        </td>
+        <td>
+          <%- notice.content.replace(/\n/ig, '<br/>') %>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<div id="notice-dialog">
+</div>
+<script type="text/javascript" src="/js/public-notice.js"></script>
+<% include footer %>

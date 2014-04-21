@@ -1,0 +1,11 @@
+﻿<ul data-role="listview" data-inset="true" data-filter="true">
+    <% for(var i = 0; i < meetings.length; i += 1) { var meeting = meetings[i]; %>
+    <li>
+        <a href="/mobile/view/<%= meeting.uuid %>">
+            <h3><%= meeting.title %> <%= meeting.startTime %> ~ <%= meeting.endTime %></h3>
+            <p><%= meeting.department %>  <%= meeting.room %></p>
+            <p><%= meeting.name %>  <%= meeting.phone %></p>
+        </a></li>
+    <% } %>
+</ul>
+

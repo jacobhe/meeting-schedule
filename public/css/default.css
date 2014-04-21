@@ -1,0 +1,69 @@
+﻿body{ 
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+#container{
+	margin-left:auto;
+	margin-right:auto;
+	width:970px;
+	text-align:left;
+}
+#footer
+{
+    height:50px;
+}
+.view-more 
+{
+}
+.row{
+	width:960px;
+	padding:5px 0px;
+	display:inline-block;
+}
+.label{
+	width:150px;
+	float:left;
+	text-align:right;
+	padding-right:10px;
+}
+.field{
+	float:left;
+}
+.field input{
+	width:250px;
+}
+.action {
+	width:400px;
+	text-align:center;
+}
+table
+{
+    border-collapse:collapse;
+    border:none;
+    width:100%;
+}
+th
+{
+    border:solid #000 1px;
+    padding:5px 5px;
+}
+td
+{
+    border:solid #000 1px;
+    padding:5px 5px;
+}
+.col1 
+{
+    width:100px;
+}
+dl
+{
+    list-style: none outside none;
+}
+
+dl li
+{
+    float:left;
+    padding:0px 5px;
+}

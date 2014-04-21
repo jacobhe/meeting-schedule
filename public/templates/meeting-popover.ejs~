@@ -1,0 +1,42 @@
+<table> 
+    <tbody> 
+        <tr> 
+            <t> 
+                会议室 
+            </th> 
+            <td></td> 
+        </tr>
+        <tr> 
+            <th> 
+                部门 
+            </th> 
+            <td> 
+                
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                人名 
+            </th> 
+            <td> 
+                
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                分机 
+            </th> 
+            <td> 
+                
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                设备 
+            </th> 
+            <td> 
+                
+            </td> 
+        </tr> 
+    </tbody> 
+</table>

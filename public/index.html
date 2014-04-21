@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Meeting Schedule 2</title>
+    <meta http-equiv="charset" content="utf-8">
+    <link href="css/window.css" rel="stylesheet" type="text/css" />
+    <link href="css/datepicker_vista.css" rel="stylesheet" type="text/css" />
+    <link href="css/mashalla-dialog.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="top-bar">
+        <div id="login" class="login"><a href="javascript:void(0);">管理员登录</a></div>
+        <div id="add-meeting" class="login"><a href="javascript:void(0);">添加会议</a></div>
+    </div>
+    <div class="m-meeting-search-area">
+        <label>日期：</label>
+        <input id="select-date" class="select-date" type="text"/>
+    </div>
+    <div class="m-calendar-right-column">
+        <div id="calendar-weekly-view-container" style="display: block;">
+            <div class="printborder mainGrid">
+                <div class="noprint">
+                </div>
+                <div class="lv-header" style="display: none;">
+                </div>
+                <div class="" style="overflow-y: visible;">
+                    <div>
+                        <table cellspacing="0" cellpadding="0" class="wk-weektop m-gd-bg m-corner-top">
+                            <tbody>
+                                <tr class="wk-daynames">
+                                    <td class="wk-tzlabel" style="width: 40px;" rowspan="3">
+                                    </td>
+                                    <th title="Sun 3/18" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Sunday 3/18</span></div>
+                                    </th>
+                                    <th title="Mon 3/19" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Monday 3/19</span></div>
+                                    </th>
+                                    <th title="Tue 3/20" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Tuesday 3/20</span></div>
+                                    </th>
+                                    <th title="Wed 3/21" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Wednesday 3/21</span></div>
+                                    </th>
+                                    <th title="Thu 3/22" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Thursday 3/22</span></div>
+                                    </th>
+                                    <th title="Fri 3/23" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Friday 3/23</span></div>
+                                    </th>
+                                    <th title="Sat 3/24" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink">Saturday 3/24</span></div>
+                                    </th>
+                                    <th class="wk-dummyth" rowspan="3" style="width: 15px;">
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="wk-allday" colspan="7">
+                                        <div class="wk-allday-pos">
+                                            <table cellspacing="0" cellpadding="0" class="st-grid" style="height: 20px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                        <td class="st-c st-s" rowspan="2">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="wk-webcontent">
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                    <td class="wk-webcontent-td">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="wk_scrolltimedevents" class="wk-scrolltimedevents" style="height: 500px;">
+                        <table cellspacing="0" cellpadding="0" class="tg-timedevents" style="height: 1008px;">
+                            <tbody>
+                                <tr height="1">
+                                    <td style="width: 40px;">
+                                    </td>
+                                    <td colspan="7">
+                                        <div class="tg-spanningwrapper">
+                                            <div class="tg-hourmarkers">
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-spanningwrapper tg-chipspanningwrapper">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-times-pri">
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                00:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                01:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                02:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                03:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                04:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                05:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                06:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                07:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                08:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                09:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                10:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                11:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                12:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                13:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                14:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                15:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                16:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                17:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                18:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                19:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                20:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                21:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                22:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                23:00</div>
+                                        </div>
+                                    </td>
+                                    <td day="3/18" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/19" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/20" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/21" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/22" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/23" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <td day="3/24" class="tg-col tg-weekend tg-col-today">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="log-messages"></div>
+    </div>
+    <!-- calendar bubble -->
+    <!--div style="z-index: 180; width: 400px; visibility: visible; display: none; left: 502px; top: 86px;" class="bubble hidden" id="calendar_bubble">
+        <table cellspacing="0" cellpadding="0" class="bubble-table">
+            <tbody>
+                <tr>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner" id="tl:3">
+                            <div class="bubble-sprite bubble-tl">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="bubble-cell-main">
+                        <div class="bubble-top">
+                        </div>
+                    </td>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner" id="tr:3">
+                            <div class="bubble-sprite bubble-tr">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bubble-mid">
+                        <div style="overflow: hidden;" id="bubbleContent:3">
+                            <div>
+                                <div>
+                                </div>
+                                <div class="cb-root">
+                                    <table cellspacing="0" cellpadding="0" class="cb-table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议时间
+                                                </th>
+                                                <td id=":w.when" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议室
+                                                </th>
+                                                <td id=":w.where" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议主题
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div class="textbox-fill-mid">
+                                                            <input type="text" id=":w.what"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议内容
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div class="textbox-fill-mid">
+                                                            <textarea id=":w.content" rows="1" cols="20"></textarea></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center;" colspan="2" class="cb-actions">
+                                                    <div id=":w.create-button" class="m-button-s">
+                                                        <a style="text-decoration: none;" href="javascript:void(0);">创建</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="bubble-corner" id="bl:3">
+                            <div class="bubble-sprite bubble-bl">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-bottom">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-corner" id="br:3">
+                            <div class="bubble-sprite bubble-br">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="bubbleClose:3" class="bubble-closebutton">
+        </div>
+        <div style="display: block; left: 101px;" class="prong" id="prong:3">
+            <div class="bubble-sprite">
+            </div>
+        </div>
+    </div -->
+    <!-- calendar bubble readonly -->
+    <div style="z-index: 180; width: 400px; visibility: visible; display: none;" class="bubble hidden" id="calendar_bubble_read_only">
+        <table cellspacing="0" cellpadding="0" class="bubble-table">
+            <tbody>
+                <tr>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-tl">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="bubble-cell-main">
+                        <div class="bubble-top">
+                        </div>
+                    </td>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-tr">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bubble-mid">
+                        <div style="overflow: hidden;">
+                            <div>
+                                <div>
+                                </div>
+                                <div class="cb-root">
+                                    <table cellspacing="0" cellpadding="0" class="cb-table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议时间
+                                                </th>
+                                                <td id="read:w.when" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议室
+                                                </th>
+                                                <td id="read:w.where" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议主题
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.what" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr id="read:w.desc.tr">
+                                                <th class="cb-key">
+                                                    会议内容
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.desc" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center;" colspan="2" class="cb-actions">
+                                                    <a id="update-meeting" href="javascript:void(0);">修改</a>
+                                                    <a id="delete-meeting" href="javascript:void(0);">删除</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-bl">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-bottom">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-br">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div onclick="$('calendar_bubble_read_only').setStyles({	'display':'none'	});" class="bubble-closebutton">
+        </div>
+        <div style="display: block; left: 101px;" class="prong" id="read:prong:3">
+            <div class="bubble-sprite">
+            </div>
+        </div>
+    </div>
+    <script src="js/mootools-core-1.4.5-full-compat.js" type="text/javascript"></script>
+    <script src="js/mootools-more-1.4.0.1-compat.js" type="text/javascript"></script>
+    <script src="js/datepicker.js" type="text/javascript"></script>
+    <script src="js/dialog.js" type="text/javascript"></script>
+    <script src="js/schedule-special.js" type="text/javascript"></script>
+</body>
+</html>

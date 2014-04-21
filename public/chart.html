@@ -1,0 +1,170 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo: 浏览器分布图</title>
+    <!--		<link rel="stylesheet" href="style.css" media="screen">
+		<link rel="stylesheet" href="../../../resources/style/demo.css" media="screen">-->
+    <!-- load dojo and provide config via data attribute -->
+    <!-- script src="/dojobox/1.7.0/dojo/dojo.js"
+				data-dojo-config="async: true, isDebug: true, parseOnLoad: true">
+		</script -->
+<!--    <link rel="stylesheet" href="style.css" media="screen">
+	<link rel="stylesheet" href="../../../resources/style/demo.css" media="screen">-->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css" media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
+        data-dojo-config="async: true, isDebug: true, parseOnLoad: true">
+    </script>
+    <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+    <script>
+
+        require([
+            // Ajax
+            'dojo/_base/xhr',
+
+            // Require the basic chart class
+            "dojox/charting/Chart",
+
+            // Require the theme of our choosing
+            "dojox/charting/themes/Claro",
+
+            // Charting plugins:
+
+            //  We want to plot a Pie chart
+            "dojox/charting/plot2d/Pie",
+
+            // Retrieve the Legend, Tooltip, and MoveSlice classes
+            "dojox/charting/action2d/Tooltip",
+            "dojox/charting/action2d/MoveSlice",
+
+            //  We want to use Markers
+            "dojox/charting/plot2d/Markers",
+
+            //  We'll use default x/y axes
+            "dojox/charting/axis2d/Default",
+
+            // Wait until the DOM is ready
+            "dojo/domReady!"
+        ], function (xhr, Chart, theme, Pie, Tooltip, MoveSlice) {
+
+            // Create the chart within it's "holding" node
+            var browserChart = new Chart("browserNode");
+
+            // Set the theme
+            browserChart.setTheme(theme);
+
+            // Add the only/default plot
+            browserChart.addPlot("default", {
+                type: Pie,
+                markers: true,
+                radius: 170
+                , labelOffset: "-20"
+            });
+
+            // Add axes
+            browserChart.addAxis("x");
+            browserChart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
+
+            // get some data, convert to JSON
+            xhr.get({
+                url: "/countBrowsers",
+                handleAs: "json",
+                load: function (data) {
+                    var chartData = [];
+                    var browser;
+                    for (var i = 0; i < data.length; i += 1) {
+                        browser = data[i];
+                        chartData.push({
+                            tooltip: data[i]._id
+                            , text: data[i]._id
+                            , stroke: 'blue'
+                            , y: data[i].value
+                        });
+                    }
+
+                    //browserChart.clear();
+
+                    // Add the series of data
+                    browserChart.addSeries("Browsers", chartData);
+
+                    // Create the tooltip
+                    var tip = new Tooltip(browserChart, "default");
+
+                    // Create the slice mover
+                    var mag = new MoveSlice(browserChart, "default");
+
+                    // Render the chart!
+                    browserChart.render();
+
+                }
+            });
+
+
+            // Create the chart within it's "holding" node
+            var engineChart = new Chart("engineNode");
+
+            // Set the theme
+            engineChart.setTheme(theme);
+
+            // Add the only/default plot
+            engineChart.addPlot("default", {
+                type: Pie,
+                markers: true,
+                radius: 170
+                , labelOffset: "-20"
+            });
+
+            // Add axes
+            engineChart.addAxis("x");
+            engineChart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
+
+            setInterval(function () {
+                // get some data, convert to JSON
+                xhr.get({
+                    url: "/countEngines",
+                    handleAs: "json",
+                    load: function (data) {
+                        var chartData = [];
+                        var browser;
+                        for (var i = 0; i < data.length; i += 1) {
+                            browser = data[i];
+                            chartData.push({
+                                tooltip: data[i]._id
+                                , text: data[i]._id
+                                , stroke: 'blue'
+                                , y: data[i].value
+                            });
+                        }
+
+                        //engineChart.clear();
+
+                        // Add the series of data
+                        engineChart.addSeries("Engines", chartData);
+
+                        // Create the tooltip
+                        var tip = new Tooltip(engineChart, "default");
+
+                        // Create the slice mover
+                        var mag = new MoveSlice(engineChart, "default");
+
+                        // Render the chart!
+                        engineChart.render();
+
+                    }
+                });
+            }, 1000);
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Demo: 浏览器分布图</h1>
+
+    <!-- create the chart -->
+    <div id="browserNode" style="width:800px;height:400px;"></div>
+
+    <div id="engineNode" style="width:800px;height:400px;"></div>
+
+</body>
+</html>

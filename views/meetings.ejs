@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>会议预定</title>
+    <meta http-equiv="charset" content="utf-8"/>
+	<meta http-equiv="pragma" content="no-cache" />
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate" />
+	<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/css/window.css" rel="stylesheet" type="text/css" />
+
+    <!-- Le styles -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--<link rel="stylesheet" type="text/css" href="/jquery-ui/css/ui-lightness/jquery-ui-1.8.21.custom.css" />-->
+    <link rel="stylesheet" type="text/css" href="/custom-theme/jquery-ui-1.8.16.custom.css" />
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="/custom-theme/jquery.ui.1.8.16.ie.css"/>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/css/overlay-apple.css" />
+
+    <style type="text/css">
+        .tg-spanningwrapper {
+            float: none;
+            margin-left: 2px;
+        }
+        .cb-key {
+            text-align:right;
+        }
+        .textbox-fill-wrapper .ck-meeting-rooms{
+            margin-right:5px;
+        }
+        .textbox-fill-wrapper .ck-equipments{
+            margin-right:5px;
+        }
+        .textbox-fill-wrapper label{
+            display: inline;
+        }
+        .select-date {
+            cursor: text !important;
+        }
+        .logo {
+            background: url("/images/logo.png") 0 4px no-repeat;
+            text-indent:35px;
+        }
+        .navbar .brand {
+            color: #FFFFFF;
+        }
+        .navbar-inner {
+            background-color: #4C5E9A;
+            background-image: -moz-linear-gradient(center top , #4C5E9A, #33488C);
+            background-image: -webkit-linear-gradient(top, #4C5E9A, #33488C);
+            filter: progid:dximagetransform.microsoft.gradient(startColorstr='#4C5E9A', endColorstr='#33488C', GradientType=0);
+        }
+        .navbar .nav .active > a, .navbar .nav .active > a:hover {
+            background-color: #33488C;
+        }
+        .navbar .divider-vertical {
+            background-color: #33488C;
+            border-right: 1px solid #4C5E9A;
+        }
+        .popover {
+            position: fixed;
+        }
+        .popover.right {
+            margin-left: 0px;
+        }
+        .popover.left {
+            margin-left: 0px;
+        }
+        .popover.bottom {
+            margin-top: 0px;
+        }
+        .popover.top {
+            margin-top: 0px;
+        }
+        .popover.right .arrow {
+            margin-left: 5px;
+        }
+        .popover.right .popover-inner {
+            margin-left: 5px;
+            width: 275px;
+        }
+        .popover.left .arrow {
+            margin-right: 5px;
+        }
+        .popover.left .popover-inner {
+            margin-right: 5px;
+            width: 275px;
+        }
+    </style>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="bootstrap/js/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
+    <script type="text/javascript" src="/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="/jquery-ui/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="/js/json2.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-popover.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-carousel.js"></script>
+    <script type="text/javascript" src="/js/gmpopover.js"></script>
+    <script type="text/javascript" src="/js/jquery.tools.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.validate.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/meetings/view">会议预定系统</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="active"><a href="#">首页</a></li>
+                        <% if (!user) { %>
+                        <li class="divider-vertical"></li>
+                        <li><a href="/user/login">管理员登录</a></li>
+                        <% } else { %>
+			                <li><a href="/admin/public-notices/list">管理公告</a></li>
+                            <li><a href="/admin/meeting-rooms/list">管理会议室</a></li>
+                            <li><a href="/admin/equipments/list">管理设备</a></li>
+                            <li><a href="/admin/regular-meetings/list">管理常规会议</a></li>
+                            <li class="divider-vertical"></li>
+                            <li class="active"><a href="javascript:void(0);">Hi <%= user.username %></a></li>
+                            <li><a href="/user/logout">退出</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    <div class="m-meeting-search-area">
+        <label style="display:inline;">日期：</label>
+        <input id="select-date" class="select-date" type="text" readonly="readonly"/>
+		<span>（点击输入框选择日期）</span>
+        <span id="add-meeting"><a href="javascript:void(0);" class="btn btn-primary">添加会议</a></span>
+        <span id="view-notices"><a rel="#log-messages" href="javascript:void(0);"  class="btn btn-primary">查看公告</a></span>
+        <span id="error-message" style="color:#FF0000"></span>
+        <div id="notice-carousel" class="carousel slide"><div class="carousel-inner"></div></div>
+    </div>
+    <div class="m-calendar-right-column">
+        <div id="calendar-weekly-view-container" style="display: block;">
+            <div class="printborder mainGrid">
+                <div class="noprint">
+                </div>
+                <div class="lv-header" style="display: none;">
+                </div>
+                <div class="" style="overflow-y: visible;">
+                    <div>
+                        <table cellspacing="0" cellpadding="0" class="wk-weektop m-gd-bg m-corner-top">
+                            <tbody>
+                                <tr class="wk-daynames">
+                                    <td class="wk-tzlabel" style="width: 40px;" rowspan="3">
+                                    </td>
+                                    <% for(var i = 0; i < meeting_rooms.length; i++) {
+                                        var meeting_room = meeting_rooms[i]; %>
+                                    <th title="<%= meeting_room.name %>" scope="col">
+                                        <div class="wk-dayname ">
+                                            <span class="wk-daylink"><%= meeting_room.name %></span></div>
+                                    </th>
+                                    <% } %>
+                                    <th class="wk-dummyth" rowspan="3" style="width: 15px;">
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                                <tr class="wk-webcontent">
+                                    <% for(var i2 = 0; i2 < meeting_rooms.length; i2++) { %>
+                                    <td class="wk-webcontent-td"></td>
+                                    <% } %>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="wk_scrolltimedevents" class="wk-scrolltimedevents" style="height: 420px;">
+                        <table cellspacing="0" cellpadding="0" class="tg-timedevents" style="height: 1008px;">
+                            <tbody>
+                                <tr height="1">
+                                    <td style="width: 40px;">
+                                    </td>
+                                    <td colspan="<%= meeting_rooms.length %>">
+                                        <div class="tg-spanningwrapper">
+                                            <div class="tg-hourmarkers">
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                                <div class="tg-markercell">
+                                                    <div class="tg-dualmarker">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-spanningwrapper tg-chipspanningwrapper">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-times-pri">
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                00:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                01:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                02:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                03:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                04:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                05:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                06:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                07:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                08:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                09:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                10:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                11:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                12:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                13:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                14:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                15:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                16:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                17:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                18:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                19:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                20:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                21:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                22:00</div>
+                                        </div>
+                                        <div style="height: 42px;">
+                                            <div class="tg-time-pri" style="height: 41px;">
+                                                23:00</div>
+                                        </div>
+                                    </td>
+                                    <% for(var i3 = 0; i3 < meeting_rooms.length; i3++) {
+                                        var meeting_room2 = meeting_rooms[i3]; %>
+                                    <td room="<%= meeting_room2.name %>" class="tg-col tg-weekend ">
+                                        <div class="tg-col-eventwrapper" style="height: 1008px; margin-bottom: -1008px;">
+                                            <div class="tg-gutter">
+                                            </div>
+                                        </div>
+                                        <div class="tg-col-overlaywrapper">
+                                        </div>
+                                    </td>
+                                    <% } %>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="apple_overlay" id="log-messages">
+          <div>
+			<strong>公告</strong>
+			<ul id="public-notice">
+			</ul>
+          </div>
+		</div>
+    </div>
+    <!-- calendar bubble readonly -->
+    <div style="z-index: 180; width: 400px; visibility: visible; display: none;" class="bubble hidden" id="calendar_bubble_read_only">
+        <table cellspacing="0" cellpadding="0" class="bubble-table">
+            <tbody>
+                <tr>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-tl">
+                            </div>
+                        </div>
+                    </td>
+                    <td class="bubble-cell-main">
+                        <div class="bubble-top">
+                        </div>
+                    </td>
+                    <td class="bubble-cell-side">
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-tr">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bubble-mid">
+                        <div style="overflow: hidden;">
+                            <div>
+                                <div>
+                                </div>
+                                <div class="cb-root">
+                                    <table cellspacing="0" cellpadding="0" class="cb-table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议时间
+                                                </th>
+                                                <td id="read:w.when" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议室
+                                                </th>
+                                                <td id="read:w.where" class="cb-value">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    会议主题
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.what" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    部门
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.department" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    人名
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.name" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="cb-key">
+                                                    分机
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.phone" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+											<tr>
+                                                <th class="cb-key">
+                                                    设备
+                                                </th>
+                                                <td class="cb-value">
+                                                    <div class="textbox-fill-wrapper">
+                                                        <div id="read:w.equipments" class="textbox-fill-mid">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center;" colspan="2" class="cb-actions">
+													<a id="comment-meeting" href="javascript:void(0);">差评</a>
+                                                    <a id="update-meeting" href="javascript:void(0);">修改</a>
+                                                    <a id="delete-meeting" href="javascript:void(0);">删除</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-bl">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-bottom">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="bubble-corner">
+                            <div class="bubble-sprite bubble-br">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div onclick="$('#calendar_bubble_read_only').hide();" class="bubble-closebutton">
+        </div>
+        <div style="display: block; left: 101px;" class="prong" id="read:prong:3">
+            <div class="bubble-sprite">
+            </div>
+        </div>
+    </div>
+        <div id="edit-meeting-dialog">
+
+        </div>
+        <div id="password-confirm-dialog">
+
+        </div>
+        <div id="equiment-dialog">
+
+        </div>
+    </div>
+
+	<script type="text/javascript">
+		<% if (!user) { %>
+            login_user = false;
+        <% } else { %>
+            login_user = true;
+        <% } %>
+	</script>
+	<script src="/js/ejs/ejs.js" type="text/javascript"></script>
+    <script src="/js/schedule-longpull.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      (function() {
+    
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = '/js/gma.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</body>
+</html>

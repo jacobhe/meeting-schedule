@@ -1,0 +1,53 @@
+<table class="table"> 
+    <tbody>
+        <tr>
+          <td colspan="2">
+            <button class="btn btn-primary" href="#">修改</button>
+            <button class="btn btn-danger" href="#">删除</button>
+            <% if(login_user) {%>
+            <button class="btn btn-warning" href="#">差评</button>
+            <% } %>
+          </td>
+        </tr>
+        <tr> 
+            <th> 
+                会议室 
+            </th> 
+            <td>
+                <%= room %>        
+            </td> 
+        </tr>
+        <tr> 
+            <th> 
+                部门 
+            </th> 
+            <td> 
+                <%= department %>        
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                人名 
+            </th> 
+            <td> 
+                <%= name %>
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                分机 
+            </th> 
+            <td> 
+                <%= phone %>
+            </td> 
+        </tr> 
+        <tr> 
+            <th> 
+                设备 
+            </th> 
+            <td> 
+                <%= equipments.join(', ') %>
+            </td> 
+        </tr> 
+    </tbody> 
+</table>

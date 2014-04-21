@@ -1,0 +1,246 @@
+﻿<% include header %>
+<style>
+  .meeting-time{
+  width:100px;
+  }
+  .cb-frequency{
+  width:100px;
+  }
+  .alert-gray {
+      color: #707070;
+      background-color: #EEEEEE;
+      border-color: #EEEEEE;
+  }
+  .ck-days {
+	
+  }
+  .lbl-days {
+	display:inline;
+  }
+</style>
+<!--<div style="padding: 5px;">
+    <a id="add-regular-meeting" href="#" class="btn btn-primary">添加常规会议</a>
+</div>-->
+<form class="well form-inline" action="list" method="GET">
+  <a class="btn btn-primary" href="#" id="add-regular-meeting">添加常规会议</a>
+  <label>搜索会议：</label>
+  <label>从</label>
+  <input name="start-date" value="<%= start_date%>" type="text" placeholder="开始日期" class="input-small select-date">
+    <label>到</label>
+  <input name="end-date" value="<%= end_date%>" type="text" placeholder="结束日期" class="input-small select-date">
+  <label>位于</label>
+    <select name="room" value="<%= room%>" class="span2">
+      <option value="">所有会议室</option>
+      <% for(var i = 0; i < meeting_rooms.length; i++) {
+        var meeting_room = meeting_rooms[i]; %>
+        <% if(meeting_room.name == room) { %>
+        <option selected="selected" value="<%= meeting_room.name %>"><%= meeting_room.name %></option>
+        <% } else { %>
+          <option value="<%= meeting_room.name %>"><%= meeting_room.name %></option>
+        <% } %>
+      <% } %>
+    </select>
+    <label>属于</label>
+    <select name="department" value="<%= department%>" class="span2">
+      <option value="">所有部门</option>
+      <% for(var i = 0; i < departments.length; i++) {
+          var d = departments[i]; %>
+          <% if(d.name == department) { %>
+			      <option selected="selected" value="<%= d.name %>"><%= d.name %></option>
+          <% } else { %>
+            <option value="<%= d.name %>"><%= d.name %></option>
+          <% } %>
+			<% } %>
+    </select>
+      <button class="btn" type="submit">Go</button>
+</form>
+<div id="list">
+  <table id="list-table" class="table table-bordered">
+    <colgroup>
+      <col style="width: 175px;"/>
+    </colgroup>
+    <thead>
+      <tr class="tb-header">
+        <th>
+          #
+        </th>
+        <th>
+          日期
+        </th>
+        <th>
+          频率
+        </th>
+        <th>
+          会议时间
+        </th>
+        <th>
+          会议室
+        </th>
+        <th>
+          会议主题
+        </th>
+        <th>
+          部门
+        </th>
+        <th>
+          人名
+        </th>
+        <th>
+          分机
+        </th>
+        <th>
+          设备
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i = 0; i < regular_meetings.length; i++) { 
+			var regular_meeting = regular_meetings[i];
+                if(regular_meeting.frequency === 'weekly') {
+                    regular_meeting.display_label = '每周';
+                    for(var j = 0; j < regular_meeting.days.length; j += 1) {
+                        switch(regular_meeting.days[j]) {
+                        case 0:
+                            regular_meeting.display_label += ' 星期天';
+                            break;
+                        case 1:
+                            regular_meeting.display_label += ' 星期一';
+                            break;
+                        case 2:
+                            regular_meeting.display_label += ' 星期二';
+                            break;
+                        case 3:
+                            regular_meeting.display_label += ' 星期三';
+                            break;
+                        case 4:
+                            regular_meeting.display_label += ' 星期四';
+                            break;
+                        case 5:
+                            regular_meeting.display_label += ' 星期五';
+                            break;
+                        case 6:
+                            regular_meeting.display_label += ' 星期六';
+                            break;
+                        }
+                    }
+                }
+                if(regular_meeting.frequency === 'monthly') {
+                    regular_meeting.display_label = '每月 ' + regular_meeting.weeknum;
+                    for(var j = 0; j < regular_meeting.days.length; j += 1) {
+                        switch(regular_meeting.days[j]) {
+                        case 0:
+                            regular_meeting.display_label += ' 星期天';
+                            break;
+                        case 1:
+                            regular_meeting.display_label += ' 星期一';
+                            break;
+                        case 2:
+                            regular_meeting.display_label += ' 星期二';
+                            break;
+                        case 3:
+                            regular_meeting.display_label += ' 星期三';
+                            break;
+                        case 4:
+                            regular_meeting.display_label += ' 星期四';
+                            break;
+                        case 5:
+                            regular_meeting.display_label += ' 星期五';
+                            break;
+                        case 6:
+                            regular_meeting.display_label += ' 星期六';
+                            break;
+                        }
+                    }
+                }
+        
+         if(regular_meeting.alert) { %>
+       <tr class="tb-list alert alert-<%= regular_meeting.alert%>">
+       <%  }  else { %>
+       <tr class="tb-list">
+       <% } %>
+        <td>
+          <a href="#" _id="<%= regular_meeting._id %>" class="edit-regular-meeting btn btn-primary">编辑
+          </a>
+          <a href="#" _id="<%= regular_meeting._id %>" class="copy-regular-meeting btn btn-warning">复制
+          </a>
+          <a href="#" _id="<%= regular_meeting._id %>" class="delete-regular-meeting btn btn-danger">删除
+          </a>
+        </td>
+        <td>
+          <%= regular_meeting.startDate %> ~ <%= regular_meeting.endDate %>
+        </td>
+        <td>
+          <%= regular_meeting.display_label %>
+        </td>
+        <td>
+          <%= regular_meeting.startTime %> ~ <%= regular_meeting.endTime %>
+        </td>
+        <td>
+          <%= regular_meeting.room %>
+        </td>
+        <td>
+          <%= regular_meeting.title %>
+        </td>
+        <td>
+          <%= regular_meeting.department %>
+        </td>
+        <td>
+          <%= regular_meeting.name %>
+        </td>
+        <td>
+          <%= regular_meeting.phone %>
+        </td>
+        <td>
+          <%= regular_meeting.equipments.join(', ') %>
+        </td>
+      </tr>
+      <% if(regular_meeting.conflict && regular_meeting.conflict.length) { %>
+      <tr class="tb-list">
+        <td rowspan="<%= regular_meeting.conflict.length + 1%>">
+          与其它会议冲突的常规会议
+        </td>
+      </tr>
+      <%    for(var j = 0; j < regular_meeting.conflict.length; j += 1) { 
+          var conflict_meeting = regular_meeting.conflict[j];
+      %>
+          <tr class="tb-list">
+            <td>
+              <%= conflict_meeting.date %>
+            </td>
+            <td>
+              
+            </td>
+            <td>
+              <%= conflict_meeting.startTime %> ~ <%= conflict_meeting.endTime %>
+            </td>
+            <td>
+              <%= conflict_meeting.room %>
+            </td>
+            <td>
+              <%= conflict_meeting.title %>
+            </td>
+            <td>
+              <%= conflict_meeting.department %>
+            </td>
+            <td>
+              <%= conflict_meeting.name %>
+            </td>
+            <td>
+              <%= conflict_meeting.phone %>
+            </td>
+            <td>
+              <%= conflict_meeting.equipments.join(', ') %>
+            </td>
+          </tr>
+      <%  } %>
+      <% } %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<div id="regular-meeting-dialog">
+</div>
+<div id="equipment-dialog">
+</div>
+<script type="text/javascript" src="/js/regular-meetings.js"></script>
+<% include footer %>

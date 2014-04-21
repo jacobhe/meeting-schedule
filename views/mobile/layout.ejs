@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="charset" content="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%- title %></title>
+    <link rel="stylesheet" type="text/css" href="/jquery-mobile/jquery.mobile-1.1.1.min.css" />
+    <script type="text/javascript" src="/jquery-mobile/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/jquery-mobile/jquery.mobile-1.1.1.min.js"></script>
+</head>
+<body>
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1><%- title %></h1>
+            <a href="/mobile/list" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content">
+            <%- body %>
+        </div>
+        <!-- /content -->
+
+    </div>
+    <!-- /page -->
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "db_hosts": [
+        {"host": "localhost", "port": "27017"}
+    ],
+    "dbname": "gmoa2",
+    "auto_reconnect": true,
+    "pool_size": 5,
+    "w": 0,
+    "native_parser": false,
+    "dbuser": "meeting",
+    "dbpassword": "abc123"
+}

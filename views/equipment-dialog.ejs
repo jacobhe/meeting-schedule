@@ -1,0 +1,33 @@
+﻿<div class="cb-root">
+    <table cellspacing="0" cellpadding="0" class="cb-table">
+        <tbody>
+            <tr>
+                <th class="cb-key">
+                     设备名称：
+                </th>
+                <td class="cb-value">
+                    <div class="textbox-fill-wrapper">
+                        <div class="textbox-fill-mid">
+                            <input type="text" id="name" class="textbox-fill-input"/>
+				                </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="cb-key">
+                    会议室：
+                </th>
+                <td class="cb-value">
+                    <div class="textbox-fill-wrapper">
+                      <div class="textbox-fill-mid" style="text-align:left;">
+                        <% for(var i = 0; i < meeting_rooms.length; i++) {
+                            var meeting_room = meeting_rooms[i]; %>
+                            <input type="checkbox" class="ck-meeting-rooms" value="<%= meeting_room.name %>" id="<%= meeting_room.name %>"/><label for="<%= meeting_room.name %>"><%= meeting_room.name %></label><br/>
+                        <% } %>
+                      </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

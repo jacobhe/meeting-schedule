@@ -1,0 +1,48 @@
+﻿<% include header %>
+<div style="padding: 5px;">
+  <div>
+    <a id="add-equipment" href="#" class="btn btn-primary">添加设备</a>
+  </div>
+</div>
+<div id="list">
+  <table id="list-table" class="table table-striped table-bordered">
+    <colgroup>
+      <col style="width: 120px;"/>
+    </colgroup>
+    <thead>
+      <tr class="tb-header">
+        <th>
+          #
+        </th>
+        <th>
+          设备
+        </th>
+        <th>
+          可以使用的会议室
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i = 0; i < equipments.length; i++) { 
+			var equipment = equipments[i]; %>
+      <tr class="tb-list">
+        <td>
+          <!--<a href="#" id="<%= equipment.uuid %>" class="edit-equipment">编辑</a>-->
+          <a href="#" id="<%= equipment._id %>" class="delete-equipment btn btn-danger">删除
+          </a>
+        </td>
+        <td>
+          <%= equipment.name %>
+        </td>
+        <td>
+          <%= equipment.meeting_rooms.join(', ') %>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<div id="equipment-dialog">
+</div>
+<script type="text/javascript" src="/js/equipments.js"></script>
+<% include footer %>

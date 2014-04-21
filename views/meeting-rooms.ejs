@@ -1,0 +1,50 @@
+﻿<% include header %>
+<div style="padding: 5px;">
+  <div>
+    <a id="add-meeting-room" href="#" class="btn btn-primary">添加会议室</a>
+  </div>
+</div>
+<div id="list">
+  <table id="list-table" class="table table-striped table-bordered">
+    <colgroup>
+      <col style="width: 120px;"/>
+    </colgroup>
+    <thead>
+      <tr class="tb-header">
+        <th>
+          #
+        </th>
+        <th>
+          内容
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i = 0; i
+      < meeting_rooms.length; i++) { 
+			var meeting_room = meeting_rooms[i]; %>
+      <tr class="tb-list">
+        <td>
+          <!--a href="#" id="<%= meeting_room.uuid %>" class="edit-meeting-room">编辑</a-->
+          <a href="#" id="<%= meeting_room._id %>" class="delete-meeting-room btn btn-danger">删除
+          </a>
+          <% if(meeting_room.enabled) { %>
+          <a href="#" id="<%= meeting_room._id %>" class="disabled-meeting-room btn btn-warning">禁用
+          </a>
+          <% } else { %>
+          <a href="#" id="<%= meeting_room._id %>" class="enabled-meeting-room btn btn-primary">启用
+          </a>
+          <% } %>
+        </td>
+        <td>
+          <%= meeting_room.name %>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<div id="rooms-dialog">
+</div>
+<script type="text/javascript" src="/js/meeting-rooms.js"></script>
+<% include footer %>

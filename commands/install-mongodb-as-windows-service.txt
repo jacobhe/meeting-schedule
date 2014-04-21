@@ -1,0 +1,1 @@
+mongod --logpath e:\mongo\logs\mongodb.log --logappend --dbpath e:\data\db --install

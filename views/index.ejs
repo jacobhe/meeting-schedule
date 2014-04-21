@@ -1,0 +1,14 @@
+﻿<% include header %>
+<h1><%= title %></h1>
+<p> 欢迎使用 <%= title %></p>
+<p> 正在为您跳转到安排会议页面。。。<p>
+<script type="text/javascript">
+	$(function(){
+	    //if(window.Browser.name === 'ie') {
+	        window.location.href = '/meetings/view';
+	    //} else {
+	    //    window.location.href = './meetings2';
+	    //}
+	});
+</script>
+<% include footer %>
